@@ -1,0 +1,115 @@
+{
+  "name": "plutus-clients",
+  "version": "1.0.0",
+  "description": "Clients to be reused for multiple clients",
+  "homepage": "https://github.com/PlutusIt/plutus-clients#readme",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PlutusIt/plutus-clients.git"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test jest --runInBand --coverage --forceExit",
+    "test:watch": "NODE_ENV=test jest --watch --runInBand",
+    "format:code": "prettier-eslint --write $PWD/'src/**/*.js'",
+    "format:tests": "prettier-eslint --write $PWD/'spec/**/*.js'",
+    "format": "npm run format:code && npm run format:tests",
+    "lint": "eslint src spec",
+    "precommit": "npm run format && npm run lint && npm run test"
+  },
+  "dependencies": {
+    "dotenv-safe": "^8.1.0",
+    "lodash": "^4.17.19",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "husky": "^3.0.5",
+    "indent-string": "^4.0.0",
+    "jest": "^24.9.0",
+    "nock": "^11.3.3",
+    "prettier": "^1.18.2",
+    "prettier-eslint": "^9.0.0",
+    "prettier-eslint-cli": "^5.0.0",
+    "uuid": "^3.3.3"
+  },
+  "keywords": [
+    "Contis",
+    "ClearJunction",
+    "ComplyAdvantage"
+  ],
+  "author": "Plutus",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/PlutusIt/plutus-clients/issues"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "jest": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "airbnb-base",
+      "prettier"
+    ],
+    "parser": "babel-eslint",
+    "plugins": [
+      "promise",
+      "prettier"
+    ],
+    "rules": {
+      "max-len": [
+        "error",
+        120
+      ],
+      "quotes": [
+        "error",
+        "single",
+        {
+          "allowTemplateLiterals": true
+        }
+      ],
+      "class-methods-use-this": 0,
+      "no-console": "error",
+      "semi": [
+        2,
+        "never"
+      ],
+      "max-lines": "off",
+      "promise/always-return": "error",
+      "promise/no-return-wrap": "error",
+      "promise/param-names": "error",
+      "no-nested-ternary": "off",
+      "promise/catch-or-return": "error",
+      "promise/no-native": "off",
+      "promise/no-nesting": "error",
+      "promise/no-promise-in-callback": "error",
+      "promise/no-callback-in-promise": "error",
+      "promise/no-return-in-finally": "error",
+      "prefer-arrow-callback": "error",
+      "space-before-blocks": "error",
+      "no-trailing-spaces": "off",
+      "space-in-parens": [
+        "error",
+        "never"
+      ],
+      "space-infix-ops": "error",
+      "space-unary-ops": "error"
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "coverage/",
+    "build/"
+  ]
+}
