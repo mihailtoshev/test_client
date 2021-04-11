@@ -31,7 +31,7 @@ class VeriffClient extends BaseClient {
   }
 
   async createSession(body) {
-    return this.post('/sessions', { body })
+    return this.post('/sessions', body)
   }
 }
 
