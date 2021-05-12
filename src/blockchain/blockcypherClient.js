@@ -88,10 +88,10 @@ class BlockCypherClient extends BaseClient {
     return tx
   }
 
-  getBlockchainData() {
+  async getBlockchainData() {
     // General information about the blockchain
-    const { blockchain } = await this.get(`/`)
-    return blockchain
+    const data = await this.get('/')
+    return data
   }
 }
 BlockCypherClient.NETWORK = NETWORK
