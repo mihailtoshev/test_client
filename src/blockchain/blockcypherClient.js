@@ -87,12 +87,6 @@ class BlockCypherClient extends BaseClient {
     const { tx } = await this.post('/txs/push', { body })
     return tx
   }
-
-  async getBlockchainData(trx) {
-    // General information about the blockchain
-    //const data = await this.get('/')
-    return 'data'
-  }
 }
 BlockCypherClient.NETWORK = NETWORK
 module.exports = BlockCypherClient

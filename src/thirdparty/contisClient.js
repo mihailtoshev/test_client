@@ -553,6 +553,18 @@ class ContisClient extends BaseClient {
   async changeTerms(params, options) {
     return this.postLoginDecorator(this._changeTerms, { params, options })
   }
+
+  async listConsumer(params, options) {
+    const body = {
+      AccountNumber: params.accountNumber,
+      SortCode: params.sortCode
+    }
+
+    return this.post('/consumer/ListConsumers', {
+      body,
+      ...options
+    })
+  }
 }
 
 module.exports = ContisClient
