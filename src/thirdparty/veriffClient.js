@@ -30,8 +30,13 @@ class VeriffClient extends BaseClient {
       .digest('hex')
   }
 
-  async getAuthorizationHeaders(requestBody = {}) {
-    const signature = await this.generateSignature(requestBody)
+  async getAuthorizationHeaders(requestBody = {}, providedSignature = null) {
+    let signature = providedSignature
+
+    if (!signature) {
+      signature = await this.generateSignature(requestBody)
+    }
+
     return {
       'x-auth-client': this.apiKey,
       'x-signature': signature
@@ -40,6 +45,28 @@ class VeriffClient extends BaseClient {
 
   async createSession(body) {
     return this.post('/sessions', { body })
+  }
+
+  async createSession2(body) {
+    return this.post('/sessions', { body })
+  }
+
+  async getPerson(session) {
+    const signature = await this.generateSignature(session)
+
+    return this.get(`/sessions/${session}/person`, { signature })
+  }
+
+  async getMediaForUser(sessionId) {
+    const signature = await this.generateSignature(sessionId)
+
+    return this.get(`/sessions/${sessionId}/media`, { signature })
+  }
+
+  async getMedia(mediaId) {
+    const signature = await this.generateSignature(mediaId)
+    
+    return this.get(`/media/${mediaId}`, { signature })
   }
 }
 

@@ -79,4 +79,27 @@ describe('Veriff client spec', () => {
     expect(request.headers['x-signature']).toContain(expectedSignature)
     expect(request.headers['x-auth-client']).toContain(apiKey)
   })
+
+  it('should make a request for a person related to a session', async () => {
+    const getPersonNock = new Promise(resolve => {
+      nock(baseUrl)
+        .get('/sessions/testing123/person')
+        .reply(201, {
+          status: 'success',
+          verification: {}
+        })
+        .once('request', (request, interceptor, body) => {
+          resolve({ request, body })
+        })
+    })
+
+    const signature = await veriffClient.generateSignature('testing123')
+
+    await veriffClient.getPerson('testing123')
+
+    const { request } = await getPersonNock
+
+    expect(request.headers['x-signature']).toContain(signature)
+    expect(request.headers['x-auth-client']).toContain(apiKey)
+  })
 })

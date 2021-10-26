@@ -149,7 +149,7 @@ class BaseClient {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         ...headers,
-        ...(noAuthHeader ? {} : await this.getAuthorizationHeaders(requestBody))
+        ...(noAuthHeader ? {} : await this.getAuthorizationHeaders(requestBody, options.signature || null))
       },
       method,
       timeout
